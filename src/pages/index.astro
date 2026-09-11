@@ -1,17 +1,163 @@
 ---
+import '../styles/global.css';
 
+const profile = {
+  name: "Ahmed Mohamed Bayoumy",
+  aka: "Bayoumy",
+  headline: "Husband, Father & Administrator!",
+  role: "Security Consultant (OnPrem & Azure)",
+  bio: "Experienced System/Network Administrator with 20+ years of technical experience. Focused on Windows servers & Active Directory.",
+  email: "ABayoumy@outlook.com",
+  site: "https://www.abayoumy.tech",
+  avatar: "https://avatars.githubusercontent.com/u/21128234?v=4",
+  resume: "https://www.abayoumy.tech/Resume.pdf",
+};
+
+const socials = [
+  { name: "GitHub",  href: "https://github.com/Aabayoumy",  icon: "M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.14c0 .3.21.67.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" },
+  { name: "LinkedIn", href: "https://linkedin.com/in/abayoumy",  icon: "M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z" },
+  { name: "X (Twitter)", href: "https://twitter.com/abayoumy78", icon: "M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" },
+  { name: "YouTube", href: "https://youtube.com/AhmedBayoumy", icon: "M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.51 3.55 12 3.55 12 3.55s-7.51 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12c0 1.95.17 3.9.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.87.5 9.38.5 9.38.5s7.51 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14c.33-1.91.5-3.86.5-5.81 0-1.95-.17-3.9-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" },
+  { name: "Discord", href: "https://discord.gg/MBEMAQdt", icon: "M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C.53 9.05-.32 13.58.1 18.06c0 .02.01.04.03.05a19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2 .02-.04 0-.08-.04-.1a13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08 0c.12.1.25.2.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.64-1.87.89a.08.08 0 0 0-.04.1c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.04 19.84 19.84 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.68-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z" },
+];
+
+const experience = [
+  { role: "Senior Security Consultant", company: "Global Brands", period: "05/2024 – Present", points: ["OnPrem Active Directory Security Assessment & Hardening.", "Implement Microsoft Defender for Identity.", "Implement Microsoft Defender for Office 365."] },
+  { role: "Security Consultant", company: "Global Brands", period: "05/2023 – 04/2024", points: ["OnPrem Active Directory Security Assessment & Hardening.", "Implement Microsoft Defender for Identity.", "Implement Microsoft Defender for Office 365."] },
+  { role: "Senior Infrastructure Manager", company: "Palm Hills Development", period: "01/2023 – 04/2023", points: ["Led technical projects aligned with business goals.", "Supervised the infrastructure team and supported 2nd-line technical support.", "Managed Office 365 & Azure tenants, OnPrem AD & VMware vSphere on Lenovo Blades & SAN."] },
+  { role: "Active Directory Support Engineer", company: "Microsoft", period: "07/2021 – 12/2022", points: ["Supported all Active Directory technologies for MEA customers.", "Mentored 3 team members."] },
+  { role: "IT Associate Manager", company: "IFFCO Saudi Arabia", period: "11/2010 – 01/2011", points: ["Managed team across KSA; IT assets, licenses and purchases.", "System & Network Administrator and endpoint security."] },
+  { role: "Team Leader", company: "IBM — Ministry of Interior, Passport Issue Project", period: "11/2008 – 11/2010", points: ["Managed Microsoft products: Windows Server, AD & clusters.", "Managed IBM TSM backup."] },
+];
+
+const skills = [
+  "Active Directory Expert","Windows Server","Windows Security Hardening","PowerShell Scripting",
+  "Microsoft Defender for Identity & O365","Office 365 & Azure","VMware vSphere",
+  "Networking (Cisco & FortiGate)","Linux Servers & Containers","Team Management & Leadership",
+  "LAPS / AD Security Assessments","Zabbix Monitoring"
+];
+
+const certifications = [
+  "SC-200 Microsoft Certified: Security Operations Analyst Associate",
+  "SC-300 Microsoft Certified: Identity and Access Administrator",
+  "MCSA 2003","MSITPro 2012","Microsoft Exchange 2007","VB.Net 2003 (Windows & Web)"
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={`${profile.role} and System/Network Administrator with 20+ years of technical experience focused on Windows servers & Active Directory.`} />
+  <meta name="keywords" content="Ahmed Bayoumy, Bayoumy, Security Consultant, Active Directory, Azure, Windows Server" />
+  <title>Ahmed Bayoumy | Security Consultant</title>
+</head>
+<body class="h-full bg-slate-950 text-white font-sans">
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.25),transparent_60%)]" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-4xl flex flex-col items-center px-6 py-24 text-center">
+      <div class="relative mb-6">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 blur-md"></div>
+        <img
+          src={profile.avatar}
+          alt={profile.name}
+          width="128"
+          height="128"
+          class="relative h-32 w-32 rounded-full border-2 border-white/20 object-cover"
+        />
+      </div>
+      <p class="mb-2 text-sm font-medium uppercase tracking-widest text-cyan-400">{profile.headline}</p>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{profile.name}</h1>
+      <p class="mt-2 text-lg text-slate-300">aka <span class="font-semibold text-white">{profile.aka}</span></p>
+      <p class="mt-4 text-xl font-medium text-cyan-300">{profile.role}</p>
+      <p class="mt-3 max-w-2xl text-slate-300">{profile.bio}</p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href={profile.resume} target="_blank" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2.5 text-sm font-semibold shadow-lg shadow-cyan-500/25 transition hover:opacity-90">View Resume</a>
+        <a href={profile.site} target="_blank" class="rounded-md border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold transition hover:bg-white/10">Visit Blog</a>
+      </div>
+
+      <div class="mt-8 flex items-center gap-3">
+        {socials.map(s => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
+             class="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/5 text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d={s.icon}/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Experience / Skills -->
+  <section class="bg-white py-20 text-slate-900 dark:bg-slate-950 dark:text-white">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="text-2xl font-bold">About Me</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300">
+        Hello there, my name is Ahmed Mohamed Bayoumy, better known as Bayoumy. I am a Security Consultant focused on on-premises Active Directory & Azure, and an experienced System/Network Administrator with over 20 years of technical experience. My work spans servers, networks, analytical thinking and creative problem solving — with a specialty in Windows servers & Active Directory security.
+      </p>
+
+      <div class="mt-12 grid gap-8 sm:grid-cols-2">
+
+        <!-- Experience -->
+        <div>
+          <h3 class="text-lg font-semibold text-cyan-600 dark:text-cyan-400">Experience</h3>
+          <ul class="mt-4 space-y-6">
+            {experience.map(job => (
+              <li>
+                <div class="text-sm font-semibold">{job.role}</div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">{job.company}</div>
+                <div class="text-xs text-slate-400">{job.period}</div>
+                <ul class="mt-2 space-y-1 pl-4">
+                  {job.points.map(p => (
+                    <li class="text-sm text-slate-600 dark:text-slate-300 before:mr-2 before:content-['–']">{p}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Skills & Certifications -->
+        <div class="space-y-10">
+          <div>
+            <h3 class="text-lg font-semibold text-cyan-600 dark:text-cyan-400">Skills</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {skills.map(skill => (
+                <li class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-cyan-600 dark:text-cyan-400">Certifications</h3>
+            <ul class="mt-4 space-y-2">
+              {certifications.map(c => (
+                <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <span class="mt-0.5 text-cyan-500">✓</span>{c}
+                </li>
+              ))}
+            </ul>
+            <a href="https://learn.microsoft.com/en-us/users/ahmedbayoumy-2721/transcript/d9w5za2g1lrxow1" target="_blank"
+               class="mt-4 inline-block text-sm font-medium text-cyan-600 underline-offset-4 hover:underline dark:text-cyan-400">
+              View Microsoft Certification Transcript →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 py-10 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-4xl px-6">
+      <p>© {new Date().getFullYear()} <a href={`mailto:${profile.email}`} class="text-cyan-400 hover:underline">{profile.email}</a></p>
+      <p class="mt-2 text-xs">Built with Astro — content from <a href={profile.site} class="hover:underline">abayoumy.tech</a></p>
+    </div>
+  </footer>
+
+</body>
 </html>
