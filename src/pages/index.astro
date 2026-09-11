@@ -23,11 +23,6 @@ const socials = [
 
 const experience = [
   { role: "Senior Security Consultant", company: "Global Brands", period: "05/2024 – Present", points: ["OnPrem Active Directory Security Assessment & Hardening.", "Implement Microsoft Defender for Identity.", "Implement Microsoft Defender for Office 365."] },
-  { role: "Security Consultant", company: "Global Brands", period: "05/2023 – 04/2024", points: ["OnPrem Active Directory Security Assessment & Hardening.", "Implement Microsoft Defender for Identity.", "Implement Microsoft Defender for Office 365."] },
-  { role: "Senior Infrastructure Manager", company: "Palm Hills Development", period: "01/2023 – 04/2023", points: ["Led technical projects aligned with business goals.", "Supervised the infrastructure team and supported 2nd-line technical support.", "Managed Office 365 & Azure tenants, OnPrem AD & VMware vSphere on Lenovo Blades & SAN."] },
-  { role: "Active Directory Support Engineer", company: "Microsoft", period: "07/2021 – 12/2022", points: ["Supported all Active Directory technologies for MEA customers.", "Mentored 3 team members."] },
-  { role: "IT Associate Manager", company: "IFFCO Saudi Arabia", period: "11/2010 – 01/2011", points: ["Managed team across KSA; IT assets, licenses and purchases.", "System & Network Administrator and endpoint security."] },
-  { role: "Team Leader", company: "IBM — Ministry of Interior, Passport Issue Project", period: "11/2008 – 11/2010", points: ["Managed Microsoft products: Windows Server, AD & clusters.", "Managed IBM TSM backup."] },
 ];
 
 const skills = [
@@ -101,25 +96,6 @@ const certifications = [
 
       <div class="mt-12 grid gap-8 sm:grid-cols-2">
 
-        <!-- Experience -->
-        <div>
-          <h3 class="text-lg font-semibold text-cyan-600 dark:text-cyan-400">Experience</h3>
-          <ul class="mt-4 space-y-6">
-            {experience.map(job => (
-              <li>
-                <div class="text-sm font-semibold">{job.role}</div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">{job.company}</div>
-                <div class="text-xs text-slate-400">{job.period}</div>
-                <ul class="mt-2 space-y-1 pl-4">
-                  {job.points.map(p => (
-                    <li class="text-sm text-slate-600 dark:text-slate-300 before:mr-2 before:content-['–']">{p}</li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <!-- Skills & Certifications -->
         <div class="space-y-10">
           <div>
@@ -145,6 +121,25 @@ const certifications = [
               View Microsoft Certification Transcript →
             </a>
           </div>
+        </div>
+
+        <!-- Experience -->
+        <div>
+          <h3 class="text-lg font-semibold text-cyan-600 dark:text-cyan-400">Experience</h3>
+          <ul class="mt-4 space-y-6">
+            {experience.map(job => (
+              <li>
+                <div class="text-sm font-semibold">{job.role}</div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">{job.company}</div>
+                <div class="text-xs text-slate-400">{job.period}</div>
+                <ul class="mt-2 space-y-1 pl-4">
+                  {job.points.map(p => (
+                    <li class="text-sm text-slate-600 dark:text-slate-300 before:mr-2 before:content-['–']">{p}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
